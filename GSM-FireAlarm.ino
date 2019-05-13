@@ -16,13 +16,13 @@
 RCSwitch prijimac = RCSwitch();                             //Vytvoření objektu přijímače z knihovny
 GSMSim gsm(RX, TX);
 
-char* number1 = "+420735511437";
-char* number2 = "+420735511437";
-char* number3 = "+420735511437";
-char* number4 = "+420735511437";
-char* number5 = "+420735511437";
-char* number6 = "+420735511437";
-char* number7 = "+420735511437";
+char* number1 = "+xxxxxxxxxxxx";
+char* number2 = "+xxxxxxxxxxxx";
+char* number3 = "+xxxxxxxxxxxx";
+char* number4 = "+xxxxxxxxxxxx";
+char* number5 = "+xxxxxxxxxxxx";
+char* number6 = "+xxxxxxxxxxxx";
+char* number7 = "+xxxxxxxxxxxx";
 char* message = "Pozar v dome!!!";
 
 long ZPRAVA1 = 1511;                                         //Kód přijetí z vysílače č.1
@@ -260,43 +260,43 @@ void zpracujZpravu(){
   }
 }
 void sms1(){
-  //funkce poslání SMS a zapnutí sirény
+  //funkce poslání SMS
   Serial.println("Odesilam sms...");
   Serial.println(gsm.smsSend(number1, message)); // if success it returns true (1) else false (0)
   delay(10000);
   } 
 void sms2(){
-  //funkce poslání SMS a zapnutí sirény
+  //funkce poslání SMS
   Serial.println("Odesilam sms...");
   Serial.println(gsm.smsSend(number2, message)); // if success it returns true (1) else false (0)
   delay(10000);
   } 
 void sms3(){
-  //funkce poslání SMS a zapnutí sirény
+  //funkce poslání SMS
   Serial.println("Odesilam sms...");
   Serial.println(gsm.smsSend(number3, message)); // if success it returns true (1) else false (0)
   delay(10000);
   } 
 void sms4(){
-  //funkce poslání SMS a zapnutí sirény
+  //funkce poslání SMS
   Serial.println("Odesilam sms...");
   Serial.println(gsm.smsSend(number4, message)); // if success it returns true (1) else false (0)
   delay(10000);
   } 
 void sms5(){
-  //funkce poslání SMS a zapnutí sirény
+  //funkce poslání SMS
   Serial.println("Odesilam sms...");
   Serial.println(gsm.smsSend(number5, message)); // if success it returns true (1) else false (0)
   delay(10000);
   } 
 void sms6(){
-  //funkce poslání SMS a zapnutí sirény
+  //funkce poslání SMS
   Serial.println("Odesilam sms...");
   Serial.println(gsm.smsSend(number6, message)); // if success it returns true (1) else false (0)
   delay(10000);
   } 
 void sms7(){
-  //funkce poslání SMS a zapnutí sirény
+  //funkce poslání SMS
   Serial.println("Odesilam sms...");
   Serial.println(gsm.smsSend(number7, message)); // if success it returns true (1) else false (0)
   delay(10000);
