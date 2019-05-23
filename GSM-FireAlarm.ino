@@ -14,15 +14,11 @@
 
 //definice připojení pinu k arduinu
 RCSwitch prijimac = RCSwitch();                             //Vytvoření objektu přijímače z knihovny
-GSMSim gsm(RX, TX);
+GSMSim gsm(RX, TX, RESET);
 
-char* number1 = "+xxxxxxxxxxxx";
-char* number2 = "+xxxxxxxxxxxx";
-char* number3 = "+xxxxxxxxxxxx";
-char* number4 = "+xxxxxxxxxxxx";
-char* number5 = "+xxxxxxxxxxxx";
-char* number6 = "+xxxxxxxxxxxx";
-char* number7 = "+xxxxxxxxxxxx";
+char* number1 = "+420xxxxxxxxx";
+char* number2 = "+420xxxxxxxxx";
+
 char* message = "Pozar v dome!!!";
 
 long ZPRAVA1 = 1511;                                         //Kód přijetí z vysílače č.1
@@ -47,7 +43,7 @@ int citacCidlo4 = 0;
 int citacCidlo5 = 0;
 
 //limit příchodů zpráv 
-const int LIMIT_CITAC = 5;
+const int LIMIT_CITAC = 3;
 
 void setup() {
   pinMode(piezo, OUTPUT);                                   //--->Nastavení jako výstupní zařízení
@@ -56,10 +52,10 @@ void setup() {
   pinMode(Led3, OUTPUT);
   pinMode(Led4, OUTPUT);
   pinMode(Led5, OUTPUT);
-  digitalWrite(piezo, LOW);                                 //jako výstup na začátku 0 kvůli tichosti
+  digitalWrite(piezo, LOW);                                 // Piezo jako výstup, na začátku 0 kvůli tichosti
   Serial.begin(9600);                                       // Zahájení komunikace po sériové lince
   delay(1000); 
-  gsm.start();                                     //Zahájení komunikace mezi arduinem a SIM800L
+  gsm.start();                                              //Zahájení komunikace mezi arduinem a SIM800L
   delay(1000); 
   Serial.println("Program nahrán");
   delay(1000);                                              //Prodleva spuštění
@@ -107,27 +103,12 @@ void zpracujZpravu(){
       digitalWrite(Led1, HIGH);                       // Led1 zapni
       digitalWrite(piezo, HIGH);                      // Spuštění sireny na pinu č.9
       setPDU();                                       // TEXT mode
-      sms1();                                          // pokračuj na SMS
+      sms1();                                         // pokračuj na SMS
       setPDU();                                       // TEXT mode
-      sms2();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms3();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms4();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms5();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms6();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms7();                                          // pokračuj na SMS
+      sms2();                                         // pokračuj na SMS
       call1();                                        // pokračuj na volání
       call2();                                        // pokračuj na volání
-      call3();                                        // pokračuj na volání
-      call4();                                        // pokračuj na volání
-      call5();                                        // pokračuj na volání
-      call6();                                        // pokračuj na volání
-      call7();                                        // pokračuj na volání
-      resetFunc();                                     // Reset zařízení
+      resetFunc();                                    // Reset zařízení
     }
   }
   //pripad - Cidlo2
@@ -136,30 +117,15 @@ void zpracujZpravu(){
     citacCidlo2 = citacCidlo2 + 1;
     if (citacCidlo2 >= LIMIT_CITAC)
     { 
-      digitalWrite(Led2, HIGH);
+      digitalWrite(Led2, HIGH);                       // Led2 zapni
       digitalWrite(piezo, HIGH);                      // Spuštění sireny na pinu č.9
       setPDU();                                       // TEXT mode
-      sms1();                                          // pokračuj na SMS
+      sms1();                                         // pokračuj na SMS
       setPDU();                                       // TEXT mode
-      sms2();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms3();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms4();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms5();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms6();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms7();                                          // pokračuj na SMS
+      sms2();                                         // pokračuj na SMS
       call1();                                        // pokračuj na volání
       call2();                                        // pokračuj na volání
-      call3();                                        // pokračuj na volání
-      call4();                                        // pokračuj na volání
-      call5();                                        // pokračuj na volání
-      call6();                                        // pokračuj na volání
-      call7();                                        // pokračuj na volání
-      resetFunc();                                     // Reset zařízení
+      resetFunc();                                    // Reset zařízení
     }
   }
   //pripad - Cidlo3
@@ -168,30 +134,15 @@ void zpracujZpravu(){
     citacCidlo3 = citacCidlo3 + 1;
     if (citacCidlo3 >= LIMIT_CITAC)
     { 
-      digitalWrite(Led3, HIGH);
+      digitalWrite(Led3, HIGH);                       // Led3 zapni
       digitalWrite(piezo, HIGH);                      // Spuštění sireny na pinu č.9
       setPDU();                                       // TEXT mode
-      sms1();                                          // pokračuj na SMS
+      sms1();                                         // pokračuj na SMS
       setPDU();                                       // TEXT mode
-      sms2();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms3();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms4();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms5();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms6();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms7();                                          // pokračuj na SMS
+      sms2();                                         // pokračuj na SMS
       call1();                                        // pokračuj na volání
       call2();                                        // pokračuj na volání
-      call3();                                        // pokračuj na volání
-      call4();                                        // pokračuj na volání
-      call5();                                        // pokračuj na volání
-      call6();                                        // pokračuj na volání
-      call7();                                        // pokračuj na volání
-      resetFunc();                                     // Reset zařízení
+      resetFunc();                                    // Reset zařízení
     }
   }
   //pripad - Cidlo4
@@ -200,30 +151,15 @@ void zpracujZpravu(){
     citacCidlo4 = citacCidlo4 + 1;
     if (citacCidlo4 >= LIMIT_CITAC)
     { 
-      digitalWrite(Led4, HIGH);
+      digitalWrite(Led4, HIGH);                       // Led4 zapni
       digitalWrite(piezo, HIGH);                      // Spuštění sireny na pinu č.9
       setPDU();                                       // TEXT mode
-      sms1();                                          // pokračuj na SMS
+      sms1();                                         // pokračuj na SMS
       setPDU();                                       // TEXT mode
-      sms2();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms3();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms4();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms5();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms6();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms7();                                          // pokračuj na SMS
+      sms2();                                         // pokračuj na SMS
       call1();                                        // pokračuj na volání
       call2();                                        // pokračuj na volání
-      call3();                                        // pokračuj na volání
-      call4();                                        // pokračuj na volání
-      call5();                                        // pokračuj na volání
-      call6();                                        // pokračuj na volání
-      call7();                                        // pokračuj na volání
-      resetFunc();                                     // Reset zařízení
+      resetFunc();                                    // Reset zařízení
     }
   }
   //pripad - Cidlo5
@@ -232,30 +168,15 @@ void zpracujZpravu(){
     citacCidlo5 = citacCidlo5 + 1;
     if (citacCidlo5 >= LIMIT_CITAC)
     { 
-      digitalWrite(Led5, HIGH);
+      digitalWrite(Led5, HIGH);                       // Led5 zapni
       digitalWrite(piezo, HIGH);                      // Spuštění sireny na pinu č.9
       setPDU();                                       // TEXT mode
-      sms1();                                          // pokračuj na SMS
+      sms1();                                         // pokračuj na SMS
       setPDU();                                       // TEXT mode
-      sms2();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms3();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms4();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms5();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms6();                                          // pokračuj na SMS
-      setPDU();                                       // TEXT mode
-      sms7();                                          // pokračuj na SMS
+      sms2();                                         // pokračuj na SMS
       call1();                                        // pokračuj na volání
       call2();                                        // pokračuj na volání
-      call3();                                        // pokračuj na volání
-      call4();                                        // pokračuj na volání
-      call5();                                        // pokračuj na volání
-      call6();                                        // pokračuj na volání
-      call7();                                        // pokračuj na volání
-      resetFunc();                                     // Reset zařízení
+      resetFunc();                                    // Reset zařízení
     }
   }
 }
@@ -270,93 +191,32 @@ void sms2(){
   Serial.println("Odesilam sms...");
   Serial.println(gsm.smsSend(number2, message)); // if success it returns true (1) else false (0)
   delay(10000);
-  } 
-void sms3(){
-  //funkce poslání SMS
-  Serial.println("Odesilam sms...");
-  Serial.println(gsm.smsSend(number3, message)); // if success it returns true (1) else false (0)
-  delay(10000);
-  } 
-void sms4(){
-  //funkce poslání SMS
-  Serial.println("Odesilam sms...");
-  Serial.println(gsm.smsSend(number4, message)); // if success it returns true (1) else false (0)
-  delay(10000);
-  } 
-void sms5(){
-  //funkce poslání SMS
-  Serial.println("Odesilam sms...");
-  Serial.println(gsm.smsSend(number5, message)); // if success it returns true (1) else false (0)
-  delay(10000);
-  } 
-void sms6(){
-  //funkce poslání SMS
-  Serial.println("Odesilam sms...");
-  Serial.println(gsm.smsSend(number6, message)); // if success it returns true (1) else false (0)
-  delay(10000);
-  } 
-void sms7(){
-  //funkce poslání SMS
-  Serial.println("Odesilam sms...");
-  Serial.println(gsm.smsSend(number7, message)); // if success it returns true (1) else false (0)
-  delay(10000);
-  } 
+  }
+ 
 void call1(){
-    Serial.println("Volam...");
+  //funkce volání
+  gsm.start();
+  delay(2000);
+  Serial.println("Volam...");
   Serial.println(gsm.call(number1));
-  delay(40000);
+  delay(45000);
   Serial.println("Zavesuji");
   gsm.callHangoff();
-  delay(10000);
+  delay(2000);
+  gsm.reset();
+  delay(13000);
   }
 void call2(){
-    Serial.println("Volam...");
+  //funkce volání
+  gsm.start();
+  Serial.println("Volam...");
   Serial.println(gsm.call(number2));
-  delay(40000);
+  delay(45000);
   Serial.println("Zavesuji");
   gsm.callHangoff();
-  delay(10000);
+  delay(2000);
   }
-void call3(){
-    Serial.println("Volam...");
-  Serial.println(gsm.call(number3));
-  delay(40000);
-  Serial.println("Zavesuji");
-  gsm.callHangoff();
-  delay(10000);
-  }
-void call4(){
-    Serial.println("Volam...");
-  Serial.println(gsm.call(number4));
-  delay(40000);
-  Serial.println("Zavesuji");
-  gsm.callHangoff();
-  delay(10000);
-  }
-void call5(){
-    Serial.println("Volam...");
-  Serial.println(gsm.call(number5));
-  delay(40000);
-  Serial.println("Zavesuji");
-  gsm.callHangoff();
-  delay(10000);
-  }
-void call6(){
-    Serial.println("Volam...");
-  Serial.println(gsm.call(number6));
-  delay(40000);
-  Serial.println("Zavesuji");
-  gsm.callHangoff();
-  delay(10000);
-  }
-void call7(){
-    Serial.println("Volam...");
-  Serial.println(gsm.call(number7));
-  delay(40000);
-  Serial.println("Zavesuji");
-  gsm.callHangoff();
-  delay(5000);
-  }
+
 void vypisZpravu(){
   Serial.println("Prijata zprava: ");
   Serial.println(prijimac.getReceivedValue());
@@ -367,4 +227,3 @@ void setPDU(){
   gsm.smsTextMode(true); // TEXT or PDU mode. TEXT is readable :)
   delay(1000);
   }
-
