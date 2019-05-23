@@ -1,4 +1,4 @@
-# GMS-FireAlarm
+# GSM-FireAlarm
 Požární hlásič s odesíláním zpráv přes GSM
 Použitý modul Arduino nano,NiceRF, SIM800L a Digispark
 Funkce:
